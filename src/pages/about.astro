@@ -1,16 +1,72 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
+
+const identity = {
+  firstName: "David",
+  country: "Czech republic",
+  occupation: "Software engineer",
+  hobbies: ["programming", "technologies", "sports", "music", "art"],
+};
+
+const skills = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React",
+  "Astro",
+  "Typescript",
+  "C++",
+  "Java",
+  "Python",
+];
+
+const paneTitle = "About";
+const title = "About this project";
+
+const skillColor = "navy";
 ---
 
-<Layout title="About">
+<Layout title={paneTitle}>
   <Navbar />
 
   <main>
-    <h1>About this project</h1>
+    <h1>{title}</h1>
     <p>
       Hey, this is a test playground project for me to play with Astro and gain
       the basic knowledge to build a production-ready website with it.
     </p>
+
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>My name is {identity.firstName}.</li>
+      <li>
+        I live in {identity.country} and I work as a {identity.occupation}.
+      </li>
+      {
+        identity.hobbies.length >= 2 && (
+          <li>
+            Two of my hobbies are: {identity.hobbies[0]} and{" "}
+            {identity.hobbies[1]}
+          </li>
+        )
+      }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
   </main>
+
+  <style define:vars={{ skillColor }}>
+    h1 {
+      color: purple;
+      font-size: 4rem;
+    }
+
+    .skill {
+      color: var(--skillColor);
+      font-weight: bold;
+    }
+  </style>
 </Layout>
