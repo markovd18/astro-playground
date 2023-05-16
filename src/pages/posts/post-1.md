@@ -1,17 +1,14 @@
 ---
-title: "První post, mrtky"
+layout: "../../layouts/PostLayout.astro"
+title: "První post"
 pubDate: "2023-05-15"
 description: "This is a first post ever created at this website."
 author: "David Markov"
 image:
-    url: 'https://docs.astro.build/assets/full-logo-light.png' 
+    url: 'https://docs.astro.build/assets/full-logo-dark.png' 
     alt: 'The full Astro logo.'
 tags: ["astro", "blogging", "learning in public"]
 ---
-
-# My First Blog Post
-
-Published on: 2022-07-01
 
 Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
 

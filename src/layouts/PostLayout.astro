@@ -1,0 +1,46 @@
+---
+import Layout from "./Layout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <h1>{frontmatter.title}</h1>
+  <p>Written by {frontmatter.author}</p>
+  <p>Date published: {frontmatter.pubDate}</p>
+  <p><em>{frontmatter.description}</em></p>
+  <div class="flex">
+    <img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+
+    {
+      frontmatter.tags && (
+        <ul class="tag-list">
+          {frontmatter.tags?.map((tag: any) => (
+            <li class="tag">{tag}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+  <hr />
+  <slot />
+
+  <style>
+    .flex {
+      display: flex;
+      gap: 24px;
+    }
+
+    .tag-list {
+      list-style-type: none;
+      padding: 0px;
+    }
+
+    .tag {
+      width: fit-content;
+      background-color: blueviolet;
+      border-radius: 5px;
+      padding: 2px 5px;
+      margin: 3px 0px;
+    }
+  </style>
+</Layout>
