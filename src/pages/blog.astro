@@ -1,9 +1,11 @@
 ---
+import BlogPost from "../components/BlogPost.astro";
 import Layout from "../layouts/Layout.astro";
 
 const paneTitle = "Blog";
 const pageHeader = "Custom blog";
 const pageDescription = "Here, there will be all the blogposts rendered.";
+const posts = await Astro.glob("./posts/*.md");
 ---
 
 <Layout title={paneTitle}>
@@ -11,8 +13,13 @@ const pageDescription = "Here, there will be all the blogposts rendered.";
   <p>{pageDescription}</p>
 
   <ul>
-    <li><a href="/posts/post-1/">Post 1</a></li>
-    <li><a href="/posts/post-2/">Post 2</a></li>
-    <li><a href="/posts/post-3/">Post 3</a></li>
+    {
+      posts.map((post) => (
+        <BlogPost url={post.url ?? "/"} title={post.frontmatter.title} />
+      ))
+    }
+    <!-- <li><a href="/posts/post-1/">Post 1</a></li> -->
+    <!-- <li><a href="/posts/post-2/">Post 2</a></li> -->
+    <!-- <li><a href="/posts/post-3/">Post 3</a></li> -->
   </ul>
 </Layout>

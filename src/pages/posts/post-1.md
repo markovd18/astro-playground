@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/PostLayout.astro"
 title: "První post"
-pubDate: "2023-05-15"
+pubDate: 2023-05-15
 description: "This is a first post ever created at this website."
 author: "David Markov"
 image:
